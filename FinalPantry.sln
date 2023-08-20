@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pantry.Core", "FinalPantry\Pantry.Core.csproj", "{0C35CB61-A366-4A63-8A5A-B8187DFBB348}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pantry.Tests", "Pantry.Tests\Pantry.Tests.csproj", "{A1FB1E28-9CCD-4CB2-83A8-CE1527C4C1B2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryUI", "PantryUI\PantryUI.csproj", "{5DC6A083-3A0A-4A83-8F73-3FC3BC4FCC95}"
 EndProject
 Global
@@ -16,10 +14,6 @@ Global
 		{0C35CB61-A366-4A63-8A5A-B8187DFBB348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C35CB61-A366-4A63-8A5A-B8187DFBB348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C35CB61-A366-4A63-8A5A-B8187DFBB348}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1FB1E28-9CCD-4CB2-83A8-CE1527C4C1B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1FB1E28-9CCD-4CB2-83A8-CE1527C4C1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1FB1E28-9CCD-4CB2-83A8-CE1527C4C1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1FB1E28-9CCD-4CB2-83A8-CE1527C4C1B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DC6A083-3A0A-4A83-8F73-3FC3BC4FCC95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DC6A083-3A0A-4A83-8F73-3FC3BC4FCC95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC6A083-3A0A-4A83-8F73-3FC3BC4FCC95}.Release|Any CPU.ActiveCfg = Release|Any CPU

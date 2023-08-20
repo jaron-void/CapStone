@@ -1,25 +1,48 @@
-﻿/*// See https://aka.ms/new-console-template for more information
-
+﻿using FinalPantry;
+using FinalPantry.SampleDataGenerator;
 using Pantry.Core.Database;
 using Pantry.Core.Recipe;
+using PantryUI;
 
-Console.WriteLine("Hello, World!");
-
-
-var pantryDatabaseManager = new DatabaseManager();
-
-var pantryDatabase = pantryDatabaseManager.GetPantryDatabase();
-
-FormatIngredientsList(pantryDatabase.GetAllIngredients());
-
-
-// Methods
-
-void FormatIngredientsList(IEnumerable<IIngredient> ingredients)
+public class Program
 {
-    Console.WriteLine($"{0,-20}{1}", "Ingredient", "Description");
-    foreach (var ingredient in ingredients)
+    private static void Main()
     {
-        Console.WriteLine($"{ingredient.Name,-20}{ingredient.Description}");
+        DB.EnsureFoldersExist();
+
+        DatabaseManager manager = new DatabaseManager();
+        IPantryDatabase db = manager.GetPantryDatabase();
+        db.CreateTable();
+        LoadSampleData(db);
+        
+        TerminalOptions.Welcome();
+        TerminalOptions.PrintOptions(db);
     }
-}*/
+
+    static void LoadSampleData(IPantryDatabase db)
+    {
+        Console.WriteLine("Load Sample Data? (Y) or (N)");
+        char choice = Console.ReadKey().KeyChar;
+
+        switch (char.ToUpper(choice))
+        {
+            case 'Y':
+                List<Ingredient?> ingredients = IngredientGenerator.GenerateIngredients();
+                var recipes = RecipeGenerator.GenerateRecipes(ingredients, SampleData.RecipeNames);
+                ingredients.ForEach(db.InsertIngredient);
+                ingredients.ForEach(Console.WriteLine);
+                recipes.ForEach(db.InsertRecipe);
+                Console.Clear();
+                break;
+            case 'N':
+                break;
+            case 'Q':
+                Environment.Exit(0);
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                break;
+        }
+
+    }
+}

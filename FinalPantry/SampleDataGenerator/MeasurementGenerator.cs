@@ -6,21 +6,21 @@ public static class MeasurementGenerator
 {
 
 
-    public static List<IMeasurement> GenerateMeasurements(List<Ingredient> ingredients, List<string> recipeNames)
+    public static List<IMeasurement>? GenerateMeasurements(List<Ingredient?> ingredients, List<string?> recipeNames)
     {
-        List<IMeasurement> measurements = new List<IMeasurement>();
+        var measurements = new List<IMeasurement>();
 
-        Random random = new Random();
-
-        foreach (string recipeName in recipeNames)
+        var random = new Random();
+        
+        for (var i = 0; i < recipeNames.Count; i++)
         {
-            IIngredient ingredient = ingredients[random.Next(ingredients.Count)];
-            MeasuredIn measuredIn = (MeasuredIn)SampleData.RandomNumbers[random.Next(SampleData.RandomNumbers.Count)];
-            decimal amount = SampleData.RandomDecimals[random.Next(SampleData.RandomDecimals.Count)];
+            var measuredIn = (MeasuredIn)SampleData.RandomNumbers[random.Next(SampleData.RandomNumbers.Count)];
+            var amount = SampleData.RandomDecimals[random.Next(SampleData.RandomDecimals.Count)];
 
-            Measurement measurement = new Measurement(recipeName, ingredient, measuredIn, amount);
+            var measurement = new Measurement(recipeNames[i], ingredients[i], measuredIn, amount);
             measurements.Add(measurement);
         }
+        
 
         return measurements;
     }

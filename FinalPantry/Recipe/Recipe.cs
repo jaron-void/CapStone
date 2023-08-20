@@ -5,20 +5,20 @@ namespace Pantry.Core.Recipe;
 public class Recipe : IRecipe
 {
     // Properties
-    public string Name { get; set; }
-    public List<IMeasurement> Measurements { get; set; }
-    public List<string> Instructions { get; set; }
+    public string? Name { get; set; }
+    public List<IMeasurement>? Measurements { get; set; }
+    public List<string>? Instructions { get; set; }
     public int ServingsPerRecipe { get; set; }
     
     // Derived Property
     public float TotalPriceForRecipe => Measurements.Sum(measurement => (float)measurement.Price);
 
-
+    public float PricePerServing => TotalPriceForRecipe / ServingsPerRecipe;
     // Constructor
-    public Recipe(string name, List<IMeasurement> measurements, List<string> instructions, int servingsPerRecipe)
+    public Recipe(string? name, List<IMeasurement>? measurements, List<string> instructions, int servingsPerRecipe)
     {
         Name = name;
-        Measurements = measurements;/* ?? new List<IMeasurement>(); // Initialize the Measurements list if it's null*/
+        Measurements = measurements;
         Instructions = instructions;
         ServingsPerRecipe = servingsPerRecipe;
     }
@@ -28,5 +28,12 @@ public class Recipe : IRecipe
     {
         // Serialize Instructions list to JSON
         return JsonSerializer.Serialize(Instructions);
+    }
+    
+    // Overrides
+    public override string ToString()
+    {
+        return $"Recipe Name: {Name}. Costs : {TotalPriceForRecipe}" + 
+               $"It makes {ServingsPerRecipe} servings costing  {PricePerServing} per serving";
     }
 }

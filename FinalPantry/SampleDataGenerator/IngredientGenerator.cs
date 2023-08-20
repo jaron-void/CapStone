@@ -4,17 +4,17 @@ namespace FinalPantry.SampleDataGenerator;
 
 public static class IngredientGenerator
 {
-    public static List<Ingredient> GenerateIngredients()
+    public static List<Ingredient?> GenerateIngredients()
     {
-        List<Ingredient> ingredients = new List<Ingredient>();
+        var ingredients = new List<Ingredient?>();
 
-        for (int i = 0; i < SampleData.IngredientNames.Count; i++)
+        for (var i = 0; i < SampleData.IngredientNames.Count; i++)
         {
-            string name = SampleData.IngredientNames[i];
-            MeasuredIn measuredIn = (MeasuredIn)SampleData.RandomNumbers[i];
-            decimal pricePerMeasurement = SampleData.RandomDecimals[i];
+            var name = SampleData.IngredientNames[i];
+            var measuredIn = (MeasuredIn)SampleData.RandomNumbers[i];
+            var pricePerMeasurement = SampleData.RandomDecimals[i];
 
-            Ingredient ingredient = new Ingredient(name, measuredIn, pricePerMeasurement);
+            var ingredient = new Ingredient(name, measuredIn, pricePerMeasurement);
             ingredients.Add(ingredient);
         }
 
